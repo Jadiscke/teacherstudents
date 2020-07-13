@@ -17,6 +17,16 @@ module.exports ={
       'doctor': 'Doutorado', 
     }
     return levelMap[`${level}`]
+  },
+  grade: function(level){
+    const levelMap = {
+      '1EF': '1° Ano do Ensino Fudamental',
+      '2EF': '2° Ano do Ensino Fudamental',
+      '3EF': '3° Ano do Ensino Fudamental',
+      '4EF': '4° Ano do Ensino Fudamental',
+      '5EF': '5° Ano do Ensino Fudamental', 
+    }
+    return levelMap[`${level}`]
   }
 
 }

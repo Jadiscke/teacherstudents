@@ -1,6 +1,6 @@
 const fs = require('fs');
 const data = require('../../data.json');
-const { age, date } = require('../utils');
+const { age, date, grade } = require('../utils');
 Intl = require('intl');
 
 
@@ -19,7 +19,7 @@ exports.show = function(req,res) {
   const student = {
     ...foundStudent,
     age: age(foundStudent.birth),
-    grade: foundStudent.level,
+    level: grade(foundStudent.level),
 
 
   }
