@@ -5,22 +5,22 @@
 <div class="card">
   <section 
       class="avatar" 
-      style="background: url({{ member.avatar_url if member.avatar_url else 'https://source.unsplash.com/collection/3465564/500x500' }}) no-repeat center center / cover;">
+      style="background: url({{ student.avatar_url if student.avatar_url else 'https://source.unsplash.com/collection/3465564/500x500' }}) no-repeat center center / cover;">
   </section>
   
   <section class="details">
-  <form method="POST" action="/members?_method=PUT">
+  <form method="POST" action="/students?_method=PUT">
       
       
         <h3>Editar Instrutor</h3>
-        <input type="hidden" name="id" value="{{member.id}}">
-        {% include 'members/fields.njk'%}
+        <input type="hidden" name="id" value="{{student.id}}">
+        {% include 'students/fields.njk'%}
 
       
   </form>
 
-  <form id="form-delete" method="POST" action="/members?_method=DELETE" >
-    <input type="hidden" name="id" value="{{member.id}}">
+  <form id="form-delete" method="POST" action="/students?_method=DELETE" >
+    <input type="hidden" name="id" value="{{student.id}}">
     <button type="submit">Deletar</button>
   </form>
 

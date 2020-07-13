@@ -2,7 +2,7 @@
 {% block content %}
 
     <div class="card table-container">
-      <a href="/members/create">Novo</a>
+      <a href="/students/create">Novo</a>
       <table>
         <thead>
           <tr>
@@ -15,35 +15,35 @@
           
         </thead>
         <tbody>
-          {% for member in members %}
+          {% for student in students %}
             <tr>
               <td>
                 <div>
-                  <span style="background-image: url({{member.avatar_url}})"></span>
-                {{member.name}}
+                  <span style="background-image: url({{student.avatar_url}})"></span>
+                {{student.name}}
                 </div>
                 
               </td>
               <td>
                 <div>
-                  <span>{{member.blood}}</span>
+                  <span>{{student.blood}}</span>
                 </div>
                 
               </td>
               <td>
                 <div>
-                  <span>{{member.weight}}</span>
+                  <span>{{student.weight}}</span>
                 </div>
                 
               </td>
               <td>
                 <div>
-                  <span>{{member.height}}</span>
+                  <span>{{student.height}}</span>
                 </div>
                 
               </td>
               <td>
-                <a href="/members/{{member.id}}">ver</a>
+                <a href="/students/{{student.id}}">ver</a>
               </td>
             </tr>
           {% endfor %}
