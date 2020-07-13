@@ -4,30 +4,35 @@
     <div class="card">
       <section 
       class="avatar" 
-      style="background: url({{instructor.avatar_url}}) no-repeat center center / cover;"></section>
+      style="background: url({{teacher.avatar_url}}) no-repeat center center / cover;"></section>
       <section class="details">
 
         <h3>Detalhes</h3>
 
         <div class="item">
-          <div>Instrutor</div>
-          <div>{{instructor.name}}</div>
+          <div>Nome</div>
+          <div>{{teacher.name}}</div>
         </div>
 
         <div class="item">
           <div>Idade</div>
-          <div>{{instructor.age}} Anos</div>
+          <div>{{teacher.age}} Anos</div>
         </div>
 
         <div class="item">
-          <div>Sexo</div>
-          <div>{{instructor.gender}}</div>
+          <div>Grau de Escolaridade</div>
+          <div>{{teacher.level}}</div>
+        </div>
+
+        <div class="item">
+          <div>Tipo de Aula</div>
+          <div>{{teacher.classType}}</div>
         </div>
 
         <div class="item">
           <div>Acompanhamento</div>
           <div>
-            {% for service in instructor.services %}
+            {% for service in teacher.services %}
             <span>{{service}}</span>
             {% endfor %}
             
@@ -37,10 +42,10 @@
         <div class="item">
           <div>Desde</div>
           
-          <div>{{instructor.created_at}}</div>
+          <div>{{teacher.created_at}}</div>
         </div>
 
-        <a class='button' href="/instructors/{{instructor.id}}/edit">Editar</a>
+        <a class='button' href="/teachers/{{teacher.id}}/edit">Editar</a>
       </section>
     </div>
 

@@ -7,6 +7,16 @@ module.exports ={
   date: function(timestamp){
     // return date to HTML format
     return new Date(timestamp).toISOString().slice(0,10);
+  },
+  graduation: function(level){
+    const levelMap = {
+      'highschool': 'Ensino Médio Completo',
+      'undergraduation': 'Ensino Superior Incompleto',
+      'undegraduated': 'Ensino Superior Completo',
+      'master': 'Metrado',
+      'doctor': 'Doutorado', 
+    }
+    return levelMap[`${level}`]
   }
 
 }
