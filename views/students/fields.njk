@@ -52,6 +52,13 @@
 </div>
 
 <div class="item">
+  <div>Acompanhamento</div>
+  <div>
+    <input type="text" name="services" placeholder="Ex: Matemática, Fisica" ,="," value="{{teacher.services}}">
+  </div>
+</div>
+
+<div class="item">
   <div>Carga Horária Semanal</div>
   <div>
     <input type="number" min="0" max="40" oninput="validity.valid||(value='');" name="weekHours" placeholder="6" value="{{student.weekHours}}">

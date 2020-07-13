@@ -6,10 +6,9 @@
       <table>
         <thead>
           <tr>
-            <th>Membro</th>
-            <th>Sangue</th>
-            <th>Peso</th>
-            <th>Altura</th>
+            <th>Nome</th>
+            <th>Acompanhamento</th>
+            <th>Ano Escolar</th>
             <th>Ação</th>
           </tr>
           
@@ -26,19 +25,14 @@
               </td>
               <td>
                 <div>
-                  <span>{{student.blood}}</span>
+                  {% for service in student.services %}
+                    <span>{{service}}</span>
+                  {% endfor %}
                 </div>
-                
               </td>
               <td>
                 <div>
-                  <span>{{student.weight}}</span>
-                </div>
-                
-              </td>
-              <td>
-                <div>
-                  <span>{{student.height}}</span>
+                  <span>{{student.level}}</span>
                 </div>
                 
               </td>

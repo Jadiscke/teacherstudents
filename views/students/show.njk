@@ -33,6 +33,16 @@
 
         <div>{{student.level}}</div>
       </div>
+      
+      <div class="item">
+        <div>Acompanhamento</div>
+        <div>
+          {% for service in student.services %}
+            <span>{{service}}</span>
+          {% endfor %}
+
+        </div>
+      </div>
       <div class="item">
         <div>Carga Horária Semanal</div>
 

@@ -21,6 +21,7 @@ exports.show = function(req,res) {
     age: age(foundStudent.birth),
     level: grade(foundStudent.level),
     birth: date(foundStudent.birth).birthday,
+    services: String(foundStudent.services).split(','),
 
 
   }
@@ -39,7 +40,7 @@ exports.post = function(req,res){
     }
   }
 
-  const {avatar_url, name, email, weekHours, level } = req.body;
+  const {avatar_url, name, email, weekHours, level,services } = req.body;
   const lastStudent = data.students[data.students.length - 1];
   const id = lastStudent ?  lastStudent.id + 1 : 1;
   let { birth } = req.body;
@@ -55,6 +56,7 @@ exports.post = function(req,res){
     level,
     birth,
     weekHours,
+    services,
   });
 
   fs.writeFile("data.json",JSON.stringify(data, null, 2), function(err){
@@ -127,6 +129,9 @@ exports.delete = function(req,res){
 
 exports.index =  function(req,res){
   const students = data.students;
+  for (const student of students){
+    student.services = String(student.services).split(",")
+  }
   return res.render('students/index', { students });
 }
 
