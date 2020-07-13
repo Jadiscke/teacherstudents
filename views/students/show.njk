@@ -1,47 +1,61 @@
 {% extends "layout.njk" %}
 {% block content %}
 
-    <div class="card">
-      <section 
-      class="avatar" 
-      style="background: url({{student.avatar_url}}) no-repeat center center / cover;"></section>
-      <section class="details">
+  <div class="card">
+    <section class="avatar" style="background: url({{student.avatar_url}}) no-repeat center center / cover;"></section>
+    <section class="details">
 
-        <h3>Detalhes</h3>
+      <h3>Detalhes</h3>
 
-        <div class="item">
-          <div>Instrutor</div>
-          <div>{{student.name}}</div>
-        </div>
+      <div class="item">
+        <div>Nome</div>
+        <div>{{student.name}}</div>
+      </div>
 
-        <div class="item">
-          <div>Idade</div>
-          <div>{{student.age}} Anos</div>
-        </div>
+      <div class="item">
+        <div>Idade</div>
+        <div>{{student.age}}
+          Anos</div>
+      </div>
 
-        <div class="item">
-          <div>Sexo</div>
-          <div>{{student.gender}}</div>
-        </div>
+      <div class="item">
+        <div>E-mail</div>
+        <div>{{student.email}}</div>
+      </div>
 
-        <div class="item">
-          <div>Tipo Sanguineo</div>
-          
-          <div>{{student.blood}}</div>
-        </div>
-        <div class="item">
-          <div>Peso</div>
-          
-          <div>{{student.weight}} Kg</div>
-        </div>
-        <div class="item">
-          <div>Altura</div>
-          
-          <div>{{student.height}} cm</div>
-        </div>
+      <div class="item">
+        <div>Ano de Escolariade</div>
 
+        <div>{{student.level}}</div>
+      </div>
+      <div class="item">
+        <div>Carga Horária Semanal</div>
+
+        <div>{{student.weekHours}}
+          horas</div>
+      </div>
+      <div class="buttons-grid">
         <a class='button' href="/students/{{student.id}}/edit">Editar</a>
-      </section>
-    </div>
 
+        <form id="form-delete" method="POST" action="/students?_method=DELETE">
+          <input type="hidden" name="id" value="{{student.id}}">
+          <button type="submit">Deletar</button>
+        </form>
+      </div>
+
+    </section>
+
+  </div>
+
+</section>
+</div>
+<script>
+const formDelete = document.querySelector("#form-delete");
+formDelete.addEventListener("submit", function (event) {
+  const confirmation = confirm("Deseja Deletar?")
+  if (!confirmation) {
+    event.preventDefault();
+  }
+});
+</script>
 {% endblock %}

@@ -19,7 +19,7 @@ exports.show = function(req,res) {
   const student = {
     ...foundStudent,
     age: age(foundStudent.birth),
-    gender: foundStudent.gender == 'M' ? 'Masculino': 'Feminino',
+    grade: foundStudent.level,
 
 
   }
@@ -38,7 +38,7 @@ exports.post = function(req,res){
     }
   }
 
-  const {avatar_url, name, email, gender, blood,height, weight, } = req.body;
+  const {avatar_url, name, email, weekHours, level } = req.body;
   const lastStudent = data.students[data.students.length - 1];
   const id = lastStudent ?  lastStudent.id + 1 : 1;
   let { birth } = req.body;
@@ -51,11 +51,9 @@ exports.post = function(req,res){
     avatar_url,
     name,
     email,
-    gender,
+    level,
     birth,
-    blood,
-    height,
-    weight
+    weekHours,
   });
 
   fs.writeFile("data.json",JSON.stringify(data, null, 2), function(err){
