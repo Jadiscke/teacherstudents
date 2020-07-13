@@ -1,0 +1,14 @@
+{
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "name": "tales of demons",
+      "gender": "F",
+      "birth": 1208822400000,
+      "services": "Crossfit, Funcional, Perda de Peso",
+      "created_at": 1594645937623
+    }
+  ],
+  "members": []
+}
