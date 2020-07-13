@@ -6,7 +6,10 @@ module.exports ={
 
   date: function(timestamp){
     // return date to HTML format
-    return new Date(timestamp).toISOString().slice(0,10);
+    return {
+      date: new Intl.DateTimeFormat("pt-BR").format(timestamp).slice(0,10),
+      birthday: new Intl.DateTimeFormat("pt-BR").format(timestamp).slice(0,5)
+    }
   },
   graduation: function(level){
     const levelMap = {

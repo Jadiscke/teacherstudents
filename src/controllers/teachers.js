@@ -23,7 +23,7 @@ exports.show = function(req,res) {
     classType: foundTeacher.classType == 'local' ? 'Presencial': 'À Distância',
     services: String(foundTeacher.services).split(','),
     level: graduation(foundTeacher.level),
-    created_at: new Intl.DateTimeFormat("pt-BR").format(foundTeacher.created_at),
+    created_at: date(foundTeacher.created_at).date,
 
   }
 

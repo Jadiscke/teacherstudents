@@ -20,6 +20,7 @@ exports.show = function(req,res) {
     ...foundStudent,
     age: age(foundStudent.birth),
     level: grade(foundStudent.level),
+    birth: date(foundStudent.birth).birthday,
 
 
   }

@@ -1,5 +1,16 @@
 {
-  "teachers": [],
+  "teachers": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "name": "Jaminske",
+      "level": "highschool",
+      "classType": "local",
+      "birth": 971136000000,
+      "services": "Física, Química",
+      "created_at": 1594655407590
+    }
+  ],
   "students": [
     {
       "id": 1,
