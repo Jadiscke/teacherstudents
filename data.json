@@ -1,15 +1,4 @@
 {
-  "teachers": [
-    {
-      "id": 1,
-      "avatar_url": "https://images.unsplash.com/photo-1580894732930-0babd100d356?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      "name": "Janete Meira",
-      "level": "highschool",
-      "classType": "local",
-      "birth": 774230400000,
-      "services": "Português, Matemática",
-      "created_at": 1594650298000
-    }
-  ],
+  "teachers": [],
   "members": []
 }
