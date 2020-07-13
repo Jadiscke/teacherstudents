@@ -39,6 +39,7 @@ header .link {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 header .link  a~a{
@@ -53,11 +54,25 @@ header .chosen {
  .link a {
   color: #d9bf77;
   transition: ease-in-out 500ms;
+  position: relative;
 }
- .link a:hover {
-   font-size: larger;
-   transition: ease-in-out 500ms;
- }
+.link a::after {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  content: " ";
+}
+.link a:hover::after {
+
+  content: " ";
+  
+  width: 100%;
+  height: 2px;
+  background-color: #d9bf77;
+  border-radius: 2px;
+  transition: ease-in 500ms;
+}
 
  /* CARD */
 
