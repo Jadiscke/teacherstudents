@@ -9,26 +9,24 @@ Intl = require('intl');
 
 exports.show = function(req,res) {
   const { id } = req.params;
-  const foundTeacher = data.teachers.find(function(teacher){
-    return teacher.id == id
-  });
+  Teacher.findById(id,(teacher) => {
+    teacher = {
+      ...teacher,
+      age: age(teacher.birth_date),
+      class_type: teacher.class_type == 'local' ? 'Presencial': 'À Distância',
+      subjects_taught: String(teacher.subjects_taught).split(','),
+      education_level: graduation(teacher.education_level),
+      created_at: date(teacher.created_at).format,
+  
+    }
 
-  if(!foundTeacher){
-    return res.send("INSTRUCTOR NOT FOUND");
-  }
+    return res.render('teachers/show', { teacher });
+  })
+
+
   
 
-  const teacher = {
-    ...foundTeacher,
-    age: age(foundTeacher.birth),
-    classType: foundTeacher.classType == 'local' ? 'Presencial': 'À Distância',
-    services: String(foundTeacher.services).split(','),
-    level: graduation(foundTeacher.level),
-    created_at: date(foundTeacher.created_at).date,
-
-  }
-
-  return res.render('teachers/show', {teacher});
+  
 }
 
 exports.create = function(req,res){
@@ -53,16 +51,14 @@ exports.post = function(req,res){
 exports.edit = function(req,res){
 
   const { id } = req.params;
-  const foundTeacher = data.teachers.find(function(teacher){
-    return teacher.id == id
-  });
-
-  if(!foundTeacher){
-    return res.send("INSTRUCTOR NOT FOUND");
-  }
-
-  foundTeacher.birth = date(foundTeacher.birth);
-  return res.render('teachers/edit', {teacher: foundTeacher})
+  Teacher.findById(id, (teacher) => {
+    teacher = {
+      ...teacher,
+      birth_date: date(teacher.birth_date).iso 
+    }
+    return res.render('teachers/edit', { teacher });
+  })
+  
 }
 
 exports.put = function(req,res){

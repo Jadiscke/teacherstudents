@@ -20,18 +20,18 @@
 
       <div class="item">
         <div>Grau de Escolaridade</div>
-        <div>{{teacher.level}}</div>
+        <div>{{teacher.education_level}}</div>
       </div>
 
       <div class="item">
         <div>Tipo de Aula</div>
-        <div>{{teacher.classType}}</div>
+        <div>{{teacher.class_type}}</div>
       </div>
 
       <div class="item">
         <div>Acompanhamento</div>
         <div>
-          {% for service in teacher.services %}
+          {% for service in teacher.subjects_taught %}
             <span>{{service}}</span>
           {% endfor %}
 

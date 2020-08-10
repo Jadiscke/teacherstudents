@@ -46,5 +46,18 @@ module.exports = {
             callback(results.rows[0]);
             return
         });
+    },
+    findById(id,callback){
+        db.query(`
+            SELECT teachers.*
+            FROM teachers
+            WHERE teachers.id = ${id}
+            `, function(err,results){
+                if (err) throw `Database Error!\n ${err}`;
+
+
+                callback(results.rows[0]);
+                return
+            })
     }
 }

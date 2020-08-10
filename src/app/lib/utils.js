@@ -29,7 +29,7 @@ module.exports ={
       'highschool': 'Ensino Médio Completo',
       'undergraduation': 'Ensino Superior Incompleto',
       'undegraduated': 'Ensino Superior Completo',
-      'master': 'Metrado',
+      'master': 'Mestrado',
       'doctor': 'Doutorado', 
     }
     return levelMap[`${level}`]
