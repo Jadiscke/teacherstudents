@@ -44,31 +44,10 @@ exports.post = function(req,res){
     }
   }
 
-  const {avatar_url, name, services, classType, level } = req.body;
-  const created_at = Date.now();
-  const lastTeacher = data.teachers[data.teachers.length - 1];
-  const id = lastTeacher ?  lastTeacher.id + 1 : 1;
-  let { birth } = req.body;
-  birth = Date.parse(birth);
-  
-
-  
-  data.teachers.push({
-    id,
-    avatar_url,
-    name,
-    level,
-    classType,
-    birth,
-    services,
-    created_at,
-  });
-
-  fs.writeFile("data.json",JSON.stringify(data, null, 2), function(err){
-    if(err) return res.send('Write File Error');
-    
-    return res.redirect(`/teachers/${id}`)
-  });
+    Teacher.create(req.body,( { id  })=> {
+      res.redirect('/teachers')
+      console.log(id);
+    });
 }
 
 exports.edit = function(req,res){

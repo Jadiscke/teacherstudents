@@ -1,16 +1,29 @@
-module.exports ={
-  age: function(timestamp){
-    const milisecondsYear = Date.parse(1971,1,1);
-    return parseInt((Date.now() - timestamp)/milisecondsYear,10)
-  },
+function date(timestamp) {
+  const date = new Date(timestamp);
 
-  date: function(timestamp){
-    // return date to HTML format
-    return {
-      date: new Intl.DateTimeFormat("pt-BR").format(timestamp).slice(0,10),
-      birthday: new Intl.DateTimeFormat("pt-BR").format(timestamp).slice(0,5)
-    }
-  },
+  const year = date.getUTCFullYear();
+  const month = `0${date.getUTCMonth() + 1}`.slice(-2);
+  const day = `0${date.getUTCDate()}`.slice(-2);
+
+  return {
+    day,
+    month,
+    year,
+    iso: `${year}-${month}-${day}`,
+    birthDay: `${day}/${month}`,
+    format: `${day}/${month}/${year}`
+  }
+}
+
+function age(timestamp){
+  const milisecondsYear = Date.parse(1971,1,1);
+  return parseInt((Date.now() - timestamp)/milisecondsYear,10)
+}
+
+
+module.exports ={
+  age,
+  date,
   graduation: function(level){
     const levelMap = {
       'highschool': 'Ensino Médio Completo',
