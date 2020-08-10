@@ -4,6 +4,7 @@
 :root {
   --primary-color: #639a67;
   --secondary-color: #d8ebb5;
+  font-size: 62.5%;
 }
 * {
   outline: none;
@@ -30,8 +31,8 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 30px 0;
-  max-height: 75px;
+  padding: 3rem 0;
+  max-height: 7.5rem;
   backdrop-filter: brightness(75%);
 }
 
@@ -43,22 +44,23 @@ header .link {
 }
 
 header .link  a~a{
-  margin-left: 30px;
+  margin-left: 3rem;
 }
 
 header .chosen {
   font-weight: bold;
-  filter: drop-shadow(0 5px 10px);
+  filter: drop-shadow(0 0.5rem 1rem);
 }
 
  .link a {
   color: #d9bf77;
   transition: ease-in-out 500ms;
   position: relative;
+  font-size: 1.8rem;
 }
 .link a::after {
   position: absolute;
-  bottom: -5px;
+  bottom: -0.5rem;
   left: 0;
   width: 0%;
   content: " ";
@@ -68,24 +70,24 @@ header .chosen {
   content: " ";
   
   width: 100%;
-  height: 2px;
+  height: 0.2rem;
   background-color: #d9bf77;
-  border-radius: 2px;
+  border-radius: 0.2rem;
   transition: ease-in 500ms;
 }
 
  /* CARD */
 
  .card {
-   margin: 45px auto;
+   margin: 4.5rem auto;
    background-color: white;
-   width: 800px;
-   min-height: 400px;
+   width: 80rem;
+   min-height: 40rem;
 
    display: grid;
    grid-template-columns: 40% 60%;
     /* sombra */
-   box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.4) ;
+   box-shadow: 0 0.2rem 0.6rem -0.2rem rgba(0, 0, 0, 0.4) ;
 
    animation: up 1s ease forwards;
   }
@@ -93,7 +95,7 @@ header .chosen {
 @keyframes up {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(1.5rem);
   }
   to {
     opacity: 1;
@@ -110,12 +112,12 @@ header .chosen {
  /* DETAILS */
 
  .details {
-   padding: 32px;
+   padding: 3.2rem;
  }
 
  .details .item {
    border-bottom: 1px solid rgba(0,0,0,0.1);
-   padding: 16px 0;
+   padding: 1.6rem 0;
  }
 
  .details .item:last-child {
@@ -123,17 +125,17 @@ header .chosen {
  }
  .details h3,
  .details .item div:first-child {
-   font-size: 14px;
-   line-height: 24px;
+   font-size: 1.4rem;
+   line-height: 2.4rem;
    color: #2b580c;
-   letter-spacing: 0.7px;
+   letter-spacing: 0.2rem;
    font-weight: normal;
  }
 
  .details .item div:nth-child(2) {
    color: #555;
    font-weight: bold;
-   font-size: 18px;
+   font-size: 1.8rem;
  }
 
  .details h3 {
@@ -144,15 +146,15 @@ header .chosen {
 
  .details .item div:nth-child(2) span {
    display: inline-block;
-   padding: 8px 16px;
+   padding: 0.8rem 1.6rem;
    background-color: var(--secondary-color);
-   border-radius: 16px;
+   border-radius: 1.6rem;
    color: #2b580c;
    font-weight: bold;
    text-transform: uppercase;
-   font-size: 12px;
-   margin-right: 4px;
-   margin-top: 8px;
+   font-size: 1.2rem;
+   margin-right: 0.4rem;
+   margin-top: 0.8rem;
  }
 
  /* FORM */
@@ -161,30 +163,30 @@ header .chosen {
    width: 100%;
    color: #555;
    font-weight: bold;
-   font-size: 18px; 
+   font-size: 1.8rem; 
  }
 
  input[type="radio"] {
    width: initial;
-   margin-right: 4px;
+   margin-right: 4rem;
 }
 
 input::placeholder{
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: normal;
 }
 a.button,
 button[type="submit"] {
-  padding: 8px 32px;
+  padding: 0.8rem 3.2rem;
   background-color: var(--primary-color);
   color: white;
-  border-radius: 4px;
-  margin-top: 32px;
+  border-radius: 0.4rem;
+  margin-top: 3.2rem;
   width: 100%;
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 select {
-  font-size: 1.2rem!important;
+  font-size: 2rem!important;
 }
 
 
@@ -200,13 +202,13 @@ button[type="submit"]:hover{
 
 #form-delete button[type="submit"] {
   background-color: brown;
-  margin-top: 8px;
+  margin-top: 0.8rem;
 }
 
 /* INDEX Instructors */
 .table-container{
   display: block;
-  padding: 40px;
+  padding: 4rem;
 }
 
 .table-container table{
@@ -221,15 +223,15 @@ button[type="submit"]:hover{
 
 .table-container td,
 .table-container th {
-  padding: 12px;
+  padding: 1.2rem;
   border-bottom: 1px solid #d9d9d9;
 }
 
 .table-container th {
   text-transform: uppercase;
   color: #2b580c;
-  font-size: 14px;
-  padding-left: 1.5rem;
+  font-size: 1.4rem;
+  padding-left: 2rem;
 }
 
 .table-container tbody tr:last-child td {
@@ -237,19 +239,20 @@ button[type="submit"]:hover{
 }
 .table-container tbody tr td:first-child div {
   display: grid;
-  grid-template-columns: 64px 1fr;
+  grid-template-columns: 6.4rem 1fr;
   align-items: center;
   justify-content: center;
+  font-size: 1.6rem;
 
 }
 .table-container tbody tr td:first-child span {
-  width: 48px;
-  height: 48px;
+  width: 4.8rem;
+  height: 4.8rem;
   border-radius: 50%;
   background-position: center;
   background-size: cover;
-  box-shadow: 3px 1px 6px -2px black;
-  border: 2px solid white;
+  box-shadow: 0.3rem 0.1rem 0.6rem -0.2rem black;
+  border: 0.2rem solid white;
 }
 .table-container tr th:last-child{
   text-align: center;
@@ -262,17 +265,17 @@ button[type="submit"]:hover{
 .table-container tbody tr td:last-child a,
 .table-container > a {
   background-color: var(--primary-color);
-  padding: 8px 16px;
+  padding: 0.8rem 1.6rem;
   text-decoration: none;
   text-transform: uppercase;
   color: white;
-  font-size: 12px;
-  border-radius: 6px;
+  font-size: 1.2rem;
+  border-radius: 0.6rem;
 }
 
 .table-container > a {
   display: inline-block;
-  margin: 0 0 16px 8px;
+  margin: 0 0 1.6rem 0.8rem;
 
 }
 
@@ -289,21 +292,21 @@ button[type="submit"]:hover{
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  padding: 4px;
+  padding: 0.4rem;
 }
 .table-container tbody tr td:nth-child(n+2) div span {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 0.8rem 1.6rem;
   text-align: center;
-  min-width: 100px;
+  min-width: 10rem;
   background-color: var(--secondary-color);
-  border-radius: 16px;
+  border-radius: 1.6rem;
   color: #2b580c;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 12px;
-  margin-right: 4px;
-  margin-top: 8px;
+  font-size: 1.2rem;
+  margin-right: 0.4rem;
+  margin-top: 0.8rem;
 }
 
 /* Buttons next To each other */
@@ -312,12 +315,24 @@ button[type="submit"]:hover{
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 16px;
+  gap: 2.4rem;
+  margin-top: 1.6rem;
 }
 
 .buttons-grid a,
 .buttons-grid button {
   margin-top: 0!important;
-  padding: 8px;
+  padding: 0.8rem;
+}
+
+@media (min-width: 1600px) {
+  :root {
+    font-size: 70%;
+  }
+}
+
+@media (min-width: 1900px) {
+  :root {
+    font-size: 80%;
+  }
 }
