@@ -3,13 +3,14 @@ const server = express();
 const nunjucks = require('nunjucks');
 const routes = require('./routes');
 const methodOverride = require('method-override');
+const path = require('path');
 
 
 const port = process.env.PORT || 3000;
 
 
 server.set('view engine', 'njk');
-nunjucks.configure("views", {
+nunjucks.configure(path.join(__dirname,'app','views'), {
   express: server,
   autoescape: false,
   noCache: true,
