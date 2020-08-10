@@ -1,6 +1,7 @@
 const fs = require('fs');
 const data = require('../../../data.json');
 const { age, date, graduation } = require('../lib/utils');
+const Teacher = require('../models/Teacher');
 Intl = require('intl');
 
 
@@ -132,10 +133,13 @@ exports.delete = function(req,res){
 }
 
 exports.index =  function(req,res){
-  const teachers = data.teachers;
-  for (const teacher of teachers){
-    teacher.services = String(teacher.services).split(",")
-  }
-  return res.render('teachers/index', { teachers });
+
+  Teacher.index((teachers) => {
+    for (const teacher of teachers){
+      teacher.subjects_taught = String(teacher.subjects_taught).split(",")
+    }
+    return res.render('teachers/index', { teachers });
+
+  });
 }
 
