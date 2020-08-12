@@ -32,19 +32,20 @@
 ## About The Project
 
 LaunchBase Bootcamp Project by [RocketSeat](https://rocketseat.com.br/).
-This project consists of Teacher and Students control Web App using NodeJs and Nunjucks. See it's [usage](#Usage).
+This project consists of Teacher and Students control Web App using NodeJS, Nunjucks and PostgreSQL. See it's [usage](#Usage).
 
 ### Built With
 
 * [NodeJS](https://nodejs.org/en/)
 * [Nunjucks](https://mozilla.github.io/nunjucks/)
+* [PostgreSQL](https://www.postgresql.org/)
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Firs you need to clone the Repository, but for it you need and initalized abd empty git repository in your computer.
+First you need to clone the Repository, but for it you need and initalized abd empty git repository in your computer.
 
 for Linux:
 
@@ -64,11 +65,20 @@ and type:
 
 ### Prerequisites
 
-[*NodeJS v12.18 LTS*](https://nodejs.org/en/)
-* npm
-```sh
-npm install npm@latest -g
-```
+- [*NodeJS v12.18 LTS*](https://nodejs.org/en/)
+- [*PostgreSQL*](https://www.postgresql.org/)
+
+You need a PostgreSQL server running on your local machine or remote server.
+
+- [Tutorial](https://www.postgresqltutorial.com/)
+- Installation
+  - [Windows](https://www.postgresqltutorial.com/install-postgresql/)
+  - [macOS](https://www.postgresqltutorial.com/install-postgresql-macos/)
+  - [Linux](https://www.postgresqltutorial.com/install-postgresql-linux/)
+
+
+The configurations file is on `/src/app/config/db.js`. <br>
+For more information about how to configure access: [Pooling](https://node-postgres.com/features/pooling)
 
 ### Installation
  
@@ -81,10 +91,17 @@ git clone https://github.com/jadiscke/teacherstudents.git
 npm install
 ```
 
+You may use yarn with you want.
+
 ### Test
 
 ```sh
 npm start
+```
+or
+
+```sh
+yarn start
 ```
 
 
@@ -101,7 +118,8 @@ npm start
 ## Roadmap
 
 
-- [ ] SQL DATABASE
+- [x] SQL DATABASE
+- [ ] Pagination
 - [ ] Authentication and Privileges
 - [ ] Host
 
