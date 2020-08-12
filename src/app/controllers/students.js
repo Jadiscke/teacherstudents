@@ -1,5 +1,6 @@
 const { age, date, grade } = require('../lib/utils');
 const Student = require('../models/Student');
+const Teacher = require('../models/Teacher');
 Intl = require('intl');
 
 
@@ -16,7 +17,11 @@ exports.show = function(req,res) {
       education_level: grade(student.education_level)
     }
 
-    return res.render('students/show', { student });
+    Teacher.findById(student.teacher_id,(teacher)=> {
+      return res.render('students/show', { student, teacher });
+    })
+
+    
   })
 
 
@@ -26,7 +31,10 @@ exports.show = function(req,res) {
 }
 
 exports.create = function(req,res){
-  return res.render('students/create');
+  Teacher.index((teachers)=> {
+    return res.render('students/create', { teachers });
+  });
+  
 }
 
 exports.post = function(req,res){
@@ -52,7 +60,10 @@ exports.edit = function(req,res){
       ...student,
       birth_date: date(student.birth_date).iso 
     }
-    return res.render('students/edit', { student });
+    Teacher.index((teachers)=>{
+      return res.render('students/edit', { student, teachers });
+    })
+    
   })
   
 }

@@ -25,8 +25,9 @@ module.exports = {
                 education_level,
                 birth_date,
                 week_hours,
-                subjects
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+                subjects,
+                teacher_id
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             RETURNING id
         `
 
@@ -38,6 +39,7 @@ module.exports = {
             date(data.birth_date).iso,
             data.week_hours,
             data.subjects,
+            data.teacher_id
         ]
 
         db.query(query,values, function(err,results){
@@ -70,8 +72,9 @@ module.exports = {
             education_level=($4),
             birth_date=($5),
             week_hours=($6),
-            subjects=($7)
-        WHERE id = $8;
+            subjects=($7),
+            teacher_id=($8)
+        WHERE id = $9;
         `
 
         const values = [
@@ -82,6 +85,7 @@ module.exports = {
             date(data.birth_date).iso,
             data.week_hours,
             data.subjects,
+            data.teacher_id,
             data.id
         ]
 
