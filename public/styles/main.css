@@ -258,8 +258,19 @@ button[type="submit"]:hover{
   text-align: center;
   padding-left: 0;
 }
-.table-container tr td:last-child {
+.table-container tr td:last-child,
+.table-container tr td:nth-last-child(2){
   text-align: center;
+}
+
+.table-container tr td:nth-last-child(2) div.total-students{
+  font-size: 1.2rem;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  padding: 0.8rem;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
 }
 
 .table-container tbody tr td:last-child a,

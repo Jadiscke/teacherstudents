@@ -8,6 +8,7 @@
           <tr>
             <th>Professor</th>
             <th>Atendimento</th>
+            <th>Alunos</th>
             <th>Ação</th>
           </tr>
           
@@ -27,6 +28,12 @@
                   {% for service in teacher.subjects_taught %}
                     <span>{{service}}</span>
                   {% endfor %}
+                </div>
+                
+              </td>
+              <td>
+                <div class="total-students">
+                  {{teacher.total_students}}
                 </div>
                 
               </td>
