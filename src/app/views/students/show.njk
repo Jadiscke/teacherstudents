@@ -20,7 +20,7 @@
 
       <div class="item">
         <div>Aniversário</div>
-        <div>{{student.birth}}</div>
+        <div>{{student.birth_date}}</div>
       </div>
 
       <div class="item">
@@ -31,14 +31,14 @@
       <div class="item">
         <div>Ano de Escolariade</div>
 
-        <div>{{student.level}}</div>
+        <div>{{student.education_level}}</div>
       </div>
       
       <div class="item">
         <div>Acompanhamento</div>
         <div>
-          {% for service in student.services %}
-            <span>{{service}}</span>
+          {% for subject in student.subjects %}
+            <span>{{subject}}</span>
           {% endfor %}
 
         </div>
@@ -46,7 +46,7 @@
       <div class="item">
         <div>Carga Horária Semanal</div>
 
-        <div>{{student.weekHours}}
+        <div>{{student.week_hours}}
           horas</div>
       </div>
       <div class="buttons-grid">
