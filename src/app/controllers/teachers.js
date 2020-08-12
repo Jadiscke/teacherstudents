@@ -74,13 +74,15 @@ exports.delete = function(req,res){
   });
 }
 
-exports.index =  function(req,res){
+exports.index = function(req,res){
 
+  const { filter } = req.query;
+  console.log(filter);
   Teacher.index((teachers) => {
     for (const teacher of teachers){
       teacher.subjects_taught = String(teacher.subjects_taught).split(",")
     }
-    return res.render('teachers/index', { teachers });
+    return res.render('teachers/index', { teachers, filter });
 
   });
 }

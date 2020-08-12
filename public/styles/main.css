@@ -273,8 +273,38 @@ button[type="submit"]:hover{
   margin: 0 auto;
 }
 
+.table-container .head {
+  margin: 0 0 1.6rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-container .head form {
+  display: grid;
+  width: 30rem;
+  align-items: center;
+  height: auto;
+  grid-template-columns: 4fr 1fr;
+  column-gap: 1rem;
+}
+.table-container .head form input{
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.4rem;
+  background-color: var(--secondary-color);
+  filter: brightness(110%);
+}
+
+.table-container .head button {
+  display: inline-block;
+  margin: 0;
+}
+
+
 .table-container tbody tr td:last-child a,
-.table-container > a {
+.table-container .head > a {
   background-color: var(--primary-color);
   padding: 0.8rem 1.6rem;
   text-decoration: none;
@@ -284,9 +314,10 @@ button[type="submit"]:hover{
   border-radius: 0.6rem;
 }
 
-.table-container > a {
+.table-container .head > a {
   display: inline-block;
-  margin: 0 0 1.6rem 0.8rem;
+  margin: 0;
+
 
 }
 

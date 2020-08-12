@@ -1,8 +1,16 @@
 {% extends "layout.njk" %}
 {% block content %}
-
     <div class="card table-container">
-      <a href="/teachers/create">Novo</a>
+      <div class="head">
+        <a href="/teachers/create">Novo</a>
+        <form action="/teachers" method="get">
+          <input name="filter" type="text" placeholder="Nome ou Matéria" value={{filter}}>
+          <button type="submit">
+            <span class="material-icons">filter_alt</span>
+          </button>
+        </form>
+      </div>
+      
       <table>
         <thead>
           <tr>
