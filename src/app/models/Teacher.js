@@ -62,6 +62,30 @@ module.exports = {
                 return
             })
     },
+    findBy(filter,callback){
+
+        const initalQuery = `
+            SELECT teachers.*, count(students) as total_students
+            FROM teachers
+        `
+        const filterQuery = `
+            WHERE teachers.name ILIKE '%${filter}%' OR teachers.subjects_taught ILIKE '%${filter}%'
+        `
+
+        db.query(`
+            ${initalQuery}
+            LEFT JOIN students ON  (students.teacher_id = teachers.id)
+            ${filterQuery}
+            GROUP BY teachers.id
+            ORDER BY total_students DESC
+            `, function(err,results){
+                if (err) throw `Database Error!\n ${err}`;
+
+
+                callback(results.rows);
+                return
+            })
+    },
     update(data,callback){
 
         const query = `
