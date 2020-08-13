@@ -62,6 +62,27 @@ module.exports = {
                 return
             })
     },
+    findBy(filter,callback){
+
+        const initalQuery = `
+            SELECT students.* FROM students
+        `
+        const filterQuery = `
+            WHERE students.name ILIKE '%${filter}%'
+        `
+
+        db.query(`
+            ${initalQuery}
+            ${filterQuery}
+            ORDER BY students.name ASC
+            `, function(err,results){
+                if (err) throw `Database Error!\n ${err}`;
+
+
+                callback(results.rows);
+                return
+            })
+    },
     update(data,callback){
 
         const query = `

@@ -2,7 +2,15 @@
 {% block content %}
 
     <div class="card table-container">
-      <a href="/students/create">Novo</a>
+      <div class="head">
+        <a href="/students/create">Novo</a>
+        <form action="/students" method="get">
+          <input name="filter" type="text" placeholder="Nome" value={{filter}}>
+          <button type="submit">
+            <span class="material-icons">filter_alt</span>
+          </button>
+        </form>
+      </div>
       <table>
         <thead>
           <tr>

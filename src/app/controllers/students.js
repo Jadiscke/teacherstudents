@@ -48,7 +48,6 @@ exports.post = function(req,res){
 
     Student.create(req.body,( { id  })=> {
       res.redirect('/students')
-      console.log(id);
     });
 }
 
@@ -85,11 +84,22 @@ exports.delete = function(req,res){
 
 exports.index =  function(req,res){
 
-  Student.index((students) => {
+  const { filter } = req.query;
+  if (filter){
+    return Student.findBy(filter, (students) => {
+      for (const student of students){
+        student.subjects = String(student.subjects).split(",")
+      }
+      return res.render('students/index', { students, filter });
+  
+    });
+  }
+  
+   return Student.index((students) => {
     for (const student of students){
       student.subjects = String(student.subjects).split(",")
     }
-    return res.render('students/index', { students });
+    return res.render('students/index', { students, filter });
 
   });
 }

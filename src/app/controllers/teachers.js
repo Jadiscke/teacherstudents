@@ -42,7 +42,6 @@ exports.post = function(req,res){
 
     Teacher.create(req.body,( { id  })=> {
       res.redirect('/teachers')
-      console.log(id);
     });
 }
 
