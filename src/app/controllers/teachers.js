@@ -75,23 +75,30 @@ exports.delete = function(req,res){
 
 exports.index = function(req,res){
 
-  const { filter } = req.query;
-  if (filter){
-    return Teacher.findBy(filter, (teachers) => {
+  const { filter, page = 1, limit = 2 } = req.query;
+
+  const offset = limit * (page - 1);
+
+  const options = {
+    page,
+    limit,
+    offset,
+    callback: (teachers) => {
+      const pagination = {
+        total: teachers[0]? Math.ceil(teachers[0].total / limit) : 0,
+        page
+      }
+
       for (const teacher of teachers){
         teacher.subjects_taught = String(teacher.subjects_taught).split(",")
       }
-      return res.render('teachers/index', { teachers, filter });
-  
-    });
-  }
-  
-   return Teacher.index((teachers) => {
-    for (const teacher of teachers){
-      teacher.subjects_taught = String(teacher.subjects_taught).split(",")
-    }
-    return res.render('teachers/index', { teachers, filter });
 
-  });
+      return res.render('teachers/index', { teachers, filter, pagination });
+
+    }
+  }
+
+  Teacher.paginate(options)
+
 }
 

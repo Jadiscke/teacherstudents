@@ -84,23 +84,29 @@ exports.delete = function(req,res){
 
 exports.index =  function(req,res){
 
-  const { filter } = req.query;
-  if (filter){
-    return Student.findBy(filter, (students) => {
+  const { filter, page = 1, limit = 2 } = req.query;
+
+  const offset = limit * (page - 1);
+
+  const options = {
+    page,
+    limit,
+    offset,
+    callback: (students) => {
+      const pagination = {
+        total: students[0]? Math.ceil(students[0].total / limit) : 0,
+        page
+      }
+
       for (const student of students){
         student.subjects = String(student.subjects).split(",")
       }
-      return res.render('students/index', { students, filter });
-  
-    });
-  }
-  
-   return Student.index((students) => {
-    for (const student of students){
-      student.subjects = String(student.subjects).split(",")
-    }
-    return res.render('students/index', { students, filter });
 
-  });
+      return res.render('students/index', { students, filter, pagination });
+
+    }
+  }
+
+  Student.paginate(options);
 }
 

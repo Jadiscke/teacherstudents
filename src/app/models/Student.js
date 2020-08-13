@@ -83,6 +83,44 @@ module.exports = {
                 return
             })
     },
+    paginate({ filter ,limit, offset, callback } = {}){
+
+        let query = "",
+        filterQuery = "",
+        totalQuery = `(
+          SELECT count(*) FROM students
+           ) AS total`
+
+    
+  
+        if( filter ) {
+            filterQuery = `
+            WHERE students.name ILIKE '%${filter}%'
+            OR student.subject_taught ILIKE '%${filter}%'
+            `
+
+            totalQuery = `(
+                SELECT count (*) FROM students
+                ${filterQuery}
+            ) AS total`
+        }
+
+        query = `
+        SELECT students.*, ${totalQuery}
+        FROM students
+        ${filterQuery}
+        LIMIT $1 OFFSET $2
+        `
+
+        db.query(query, [limit,offset], function(err, results){
+            if (err) throw `Database Error! ${err}`;
+            callback(results.rows);
+            return
+        });
+
+        return
+
+    },
     update(data,callback){
 
         const query = `
