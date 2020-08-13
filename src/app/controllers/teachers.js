@@ -76,13 +76,13 @@ exports.delete = function(req,res){
 exports.index = function(req,res){
 
   const { filter, page = 1, limit = 2 } = req.query;
-
   const offset = limit * (page - 1);
 
   const options = {
     page,
     limit,
     offset,
+    filter,
     callback: (teachers) => {
       const pagination = {
         total: teachers[0]? Math.ceil(teachers[0].total / limit) : 0,

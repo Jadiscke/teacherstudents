@@ -92,6 +92,7 @@ exports.index =  function(req,res){
     page,
     limit,
     offset,
+    filter,
     callback: (students) => {
       const pagination = {
         total: students[0]? Math.ceil(students[0].total / limit) : 0,
