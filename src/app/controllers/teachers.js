@@ -42,7 +42,6 @@ exports.post = function(req,res){
 
     Teacher.create(req.body,( { id  })=> {
       res.redirect('/teachers')
-      console.log(id);
     });
 }
 
@@ -74,13 +73,24 @@ exports.delete = function(req,res){
   });
 }
 
-exports.index =  function(req,res){
+exports.index = function(req,res){
 
-  Teacher.index((teachers) => {
+  const { filter } = req.query;
+  if (filter){
+    return Teacher.findBy(filter, (teachers) => {
+      for (const teacher of teachers){
+        teacher.subjects_taught = String(teacher.subjects_taught).split(",")
+      }
+      return res.render('teachers/index', { teachers, filter });
+  
+    });
+  }
+  
+   return Teacher.index((teachers) => {
     for (const teacher of teachers){
       teacher.subjects_taught = String(teacher.subjects_taught).split(",")
     }
-    return res.render('teachers/index', { teachers });
+    return res.render('teachers/index', { teachers, filter });
 
   });
 }

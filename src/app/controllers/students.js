@@ -1,5 +1,6 @@
 const { age, date, grade } = require('../lib/utils');
 const Student = require('../models/Student');
+const Teacher = require('../models/Teacher');
 Intl = require('intl');
 
 
@@ -16,7 +17,11 @@ exports.show = function(req,res) {
       education_level: grade(student.education_level)
     }
 
-    return res.render('students/show', { student });
+    Teacher.findById(student.teacher_id,(teacher)=> {
+      return res.render('students/show', { student, teacher });
+    })
+
+    
   })
 
 
@@ -26,7 +31,10 @@ exports.show = function(req,res) {
 }
 
 exports.create = function(req,res){
-  return res.render('students/create');
+  Teacher.index((teachers)=> {
+    return res.render('students/create', { teachers });
+  });
+  
 }
 
 exports.post = function(req,res){
@@ -40,7 +48,6 @@ exports.post = function(req,res){
 
     Student.create(req.body,( { id  })=> {
       res.redirect('/students')
-      console.log(id);
     });
 }
 
@@ -52,7 +59,10 @@ exports.edit = function(req,res){
       ...student,
       birth_date: date(student.birth_date).iso 
     }
-    return res.render('students/edit', { student });
+    Teacher.index((teachers)=>{
+      return res.render('students/edit', { student, teachers });
+    })
+    
   })
   
 }
@@ -74,11 +84,22 @@ exports.delete = function(req,res){
 
 exports.index =  function(req,res){
 
-  Student.index((students) => {
+  const { filter } = req.query;
+  if (filter){
+    return Student.findBy(filter, (students) => {
+      for (const student of students){
+        student.subjects = String(student.subjects).split(",")
+      }
+      return res.render('students/index', { students, filter });
+  
+    });
+  }
+  
+   return Student.index((students) => {
     for (const student of students){
       student.subjects = String(student.subjects).split(",")
     }
-    return res.render('students/index', { students });
+    return res.render('students/index', { students, filter });
 
   });
 }

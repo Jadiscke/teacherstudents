@@ -25,8 +25,9 @@ module.exports = {
                 education_level,
                 birth_date,
                 week_hours,
-                subjects
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+                subjects,
+                teacher_id
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
             RETURNING id
         `
 
@@ -38,6 +39,7 @@ module.exports = {
             date(data.birth_date).iso,
             data.week_hours,
             data.subjects,
+            data.teacher_id
         ]
 
         db.query(query,values, function(err,results){
@@ -60,6 +62,27 @@ module.exports = {
                 return
             })
     },
+    findBy(filter,callback){
+
+        const initalQuery = `
+            SELECT students.* FROM students
+        `
+        const filterQuery = `
+            WHERE students.name ILIKE '%${filter}%'
+        `
+
+        db.query(`
+            ${initalQuery}
+            ${filterQuery}
+            ORDER BY students.name ASC
+            `, function(err,results){
+                if (err) throw `Database Error!\n ${err}`;
+
+
+                callback(results.rows);
+                return
+            })
+    },
     update(data,callback){
 
         const query = `
@@ -70,8 +93,9 @@ module.exports = {
             education_level=($4),
             birth_date=($5),
             week_hours=($6),
-            subjects=($7)
-        WHERE id = $8;
+            subjects=($7),
+            teacher_id=($8)
+        WHERE id = $9;
         `
 
         const values = [
@@ -82,6 +106,7 @@ module.exports = {
             date(data.birth_date).iso,
             data.week_hours,
             data.subjects,
+            data.teacher_id,
             data.id
         ]
 
